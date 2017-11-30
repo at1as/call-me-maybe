@@ -1,0 +1,26 @@
+<div class="center">
+
+  <h1>Availability</h1>
+
+  <p class="calendar-description">
+    <i>Let's catch up!</i> Book an available slot below and you'll be sent a link during the requested time-slot to chat
+  </p>
+  
+  <div class="col-md-8 col-md-offset-2">
+
+    <div class="row">
+      <%= render partial: "calendar", locals: {conversations: @conversations} %>
+    </div>
+
+    <div class="row">
+      <h5>Time Zone</h5>
+    </div>
+    
+    <div class="col-md-6 col-sm- col-md-offset- col-md-offset-3">
+      <div class="row">
+        <%= time_zone_select "set-timezone", nil, ActiveSupport::TimeZone.us_zones, default: "Pacific Time (US & Canada)"  %>
+      </div>
+    </div>
+  </div>
+
+</div>

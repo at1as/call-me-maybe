@@ -1,0 +1,248 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+@import "bootstrap-sprockets"
+@import "bootstrap"
+
+@mixin box_sizing
+  -moz-box-sizing: border-box
+  -webkit-box-sizing: border-box
+  box-sizing: border-box
+
+/* OVERRIDE BOOTSTRAP DEFAULTS */
+
+.row
+  margin-left: 0px
+  margin-right: 0px
+
+.form-inline
+  .form-group
+    margin-left: 0
+    margin-right: 0
+
+/* PAGE ELEMENTS */
+
+.html, body
+  max-width: 100%
+  overflow-y: scroll
+  margin-bottom: 80px //footer padding
+
+hr
+  margin-top: 5px
+  margin-bottom: 15px
+
+textarea
+  resize: vertical
+
+.text_blurb
+  font-size: 16px
+  max-width: 500px
+  margin-top: 15px
+  margin-bottom: 15px
+  margin-left: auto
+  margin-right: auto
+
+.footer
+  margin-top: 40px
+  text-align: center
+
+.imgs_container
+  margin-left: auto
+  margin-right: auto
+  height: 340px
+  background-color: #888
+  color: white
+  overflow: scroll
+  overflow-y: hidden
+  max-width: 800px
+  white-space: nowrap
+  vertical-align: middle
+  border: 1px solid black
+  padding: 20px
+  margin-top: 20px
+  margin-bottom: 20px
+
+.img_container
+  height: 280px
+  margin-left: 10px
+  margin-right: 10px
+  vertical-align: middle
+  display: inline-block
+  white-space: nowrap
+
+.link_container
+  margin-top: 40px
+
+dd
+  margin-left: 100px
+  margin-bottom: 2px
+
+/* PLACEMENT STYLES */
+
+.center
+  text-align: center
+  h1
+    margin-bottom: 10px
+
+.left
+  float: left
+  text-align: left
+  width: 100%
+
+.seperator
+  margin-top: 30px
+  width: 100%
+  display: inline-block
+
+.heading-spacing
+  margin-bottom: 30px
+
+h1
+  text-align: center
+
+/* ERRORS */
+
+#error_explanation 
+  color: #f00
+  ul
+    list-style: none
+    margin: 0 0 18px 0
+
+.field_with_errors
+  @extend .has-error !optional
+  .form-control
+    color: red
+
+.alert-error
+  padding-top: 15px
+  padding-bottom: 15px
+  border-radius: 3px
+  background-color: #D46A6A
+  color: black
+
+.alert-success
+  margin-top: 30px
+  margin-bottom: 30px
+  padding-top: 15px
+  padding-bottom: 15px
+  border-radius: 3px
+  background-color: #DFF0D8
+  color: black
+
+
+/* FORM STYLING */
+
+input, textarea, select, .uneditable-inpuT
+  border: 1px solid #bbb
+  width: 100%
+  padding: 10px
+  margin-bottom: 15px
+  @include box_sizing
+
+.form_boundary
+  max-width: 500px
+  padding-left: 5px
+  padding-right: 5px
+  margin-left: auto
+  margin-right: auto
+  overflow: scroll
+
+.outer_form_container
+  width: 100%
+
+.required_star
+  color: red
+  margin-left: 4px
+  display: inline-block
+
+.filter_box
+  padding: 10px
+  background-color: #F2F2F2
+  border-radius: 3px
+  display: table
+  border: 1px solid #DDD
+
+.detail_box
+  margin-left: 5px
+  margin-right: 5px
+  padding: 10px
+  background-color: #F5F5F5
+  border-radius: 3px
+  display: table
+  border: 1px solid #DDD
+  width: 100%
+
+.pre_strip_formatting
+  padding: 0px
+  font-size: 15px
+  font-family: Helvetica, Arial, sans-serif
+  border: none
+  white-space: pre-wrap
+  white-space: -moz-pre-wrap
+
+/* Calendar */
+
+.event-div
+  margin-bottom: 10px
+
+.event-type
+  text-align: center
+  font-weight: 500
+
+.event-date
+  text-align: center
+  font-weight: bold
+
+.event-time
+  font-weight: 400
+
+// Calendar
+.simple-calendar
+  .today
+    background-color: #FFFFC0 !important
+
+  .has-events
+    background-color: #FFFFC0 !important
+  
+  .past
+    background-color: #DDD !important
+  
+  .day
+    height: 80px
+    width: 14%
+    border: 1px solid #DDD
+
+  .td
+    border: 1px solid #DDD
+  
+  .th
+    border: 1px solid #DDD
+
+
+.calendar-date
+  width: 100%
+  text-align: left
+
+.calendar-title
+  font-size: 20px
+  font-weight: 200
+  padding: 8px
+
+.calendar-heading
+  font-size: 20px
+
+.calendar-description
+  margin-top: 20px
+  margin-bottom: 40px
+

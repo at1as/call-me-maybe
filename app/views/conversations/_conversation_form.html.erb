@@ -1,0 +1,42 @@
+<%= form_for [@conversation] do |f| %>
+  <h4 class="seperator"></h4>
+  <hr>
+
+  <p>
+    <%= f.label "Email Address" %><span class="required_star">*</span><br>
+    <%= f.text_field :guest_email, class: 'form-control' %>
+  </p>
+  
+  <p>
+    <%= f.label "Scheduled Date" %><br>
+    <%= f.text_field :message, class: 'form-control', readonly: true, value: date_str(@date) %>
+  </p>
+  
+  <p>
+    <%= f.label "Scheduled Times" %><span class="required_star">*</span><br>
+    <%= f.select :message, times_available(@date), name: 'time', class: 'form-control' %>
+  </p>
+  
+  <p>
+    <%= f.label "Time Zone" %><br>
+    <%= f.time_zone_select(:message, ActiveSupport::TimeZone.us_zones, default: "Pacific Time (US & Canada)") %>
+  </p>
+  
+  <p>
+    <%= f.label "Reminder" %><br>
+    <%= f.text_field :message, class: 'form-control' %>
+  </p>
+  
+  <p>
+    <%= f.label "Message" %><br>
+    <%= f.text_area :message, class: 'form-control' %>
+  </p>
+
+  <p style="margin-top:30px; padding-right:20px; padding-left:20px">
+    <%= f.submit "Confirm", class: "btn btn-large btn-primary" %>
+    <div style="margin-top:10px; margin-bottom:10px; padding-right:20px; padding-left:20px">
+      <%= link_to "Back to Calendar", conversations_path, class: 'btn btn-large btn-primary', style: "width:100%" %>
+    </div>
+  </p>
+
+<% end %>

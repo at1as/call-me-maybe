@@ -1,0 +1,16 @@
+<%= month_calendar attribute: :start_time, events: @conversations do |date, conversations|%>
+  
+  <div class="calendar-date"><%= date.day %></div>
+
+  <% if available_date(date) %>
+    <%= link_to "Available", "#{conversations_path}/new?date=#{date}", :class => "available" %>
+  <% end %>
+      
+  <% conversations.each do |conversation| %>
+    <div>
+      <%= "Booked" %><br/> 
+    </div>
+  <% end %>
+
+<% end %>
+

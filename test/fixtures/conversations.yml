@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  guest_email: MyString
+  video_url: MyString
+  reminder: 2017-11-27 16:21:13
+  scheduled_time: 2017-11-27 16:21:13
+  message: MyText
+
+two:
+  guest_email: MyString
+  video_url: MyString
+  reminder: 2017-11-27 16:21:13
+  scheduled_time: 2017-11-27 16:21:13
+  message: MyText
