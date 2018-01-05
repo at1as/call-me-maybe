@@ -2,7 +2,8 @@ class ConversationsController < ApplicationController
   
   def new
     @conversation = Conversation.new
-    @date = params[:date]
+    @date         = params[:date]
+    @timezone     = params[:timezone] || "Pacific Time (US & Canada)"
   end
 
   def index
@@ -12,20 +13,23 @@ class ConversationsController < ApplicationController
   end
 
   def create
-    @conversation = Conversation.new
-    @date = params[:date]
+    fields = conversation_params
+    fields[:start_time] += " " + params[:start_time_time_component]
 
-    if @company.save
+    @conversation = Conversation.new(fields)
+    @date = params[:date]
+    
+    if @conversation.save
       flash[:success] = "Timeslot Booked!"
       redirect_to conversations_path
     else
-      render 'new'
+      render 'index'
     end
   end
 
   private
     def conversation_params
-      params.requre(:conversation).permit(:guest_email, :reminder, :start_time, :message, :date)
+      params.require(:conversation).permit(:guest_email, :reminder, :start_time, :message, :date, :day, :time)
     end
 
 end

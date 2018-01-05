@@ -7,5 +7,6 @@ class Conversation < ApplicationRecord
 
   validates :guest_email, presence: true
   validates_format_of :guest_email, :with => VALID_EMAIL_ADD, :on => :create, :allow_blank => false
+  #validates_format_of :phone_number, :with => VALID_EMAIL_ADD, :on => :create, :allow_blank => false
 
 end

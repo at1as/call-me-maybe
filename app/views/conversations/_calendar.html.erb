@@ -2,14 +2,16 @@
   
   <div class="calendar-date"><%= date.day %></div>
 
-  <% if available_date(date) %>
+  <% if date_available?(date) && !date_booked?(date, conversations) %>
     <%= link_to "Available", "#{conversations_path}/new?date=#{date}", :class => "available" %>
   <% end %>
       
   <% conversations.each do |conversation| %>
-    <div>
-      <%= "Booked" %><br/> 
-    </div>
+    <% if in_the_future?(conversation) %>
+      <div>
+        <%= "Booked" %><br/> 
+      </div>
+    <% end %>
   <% end %>
 
 <% end %>

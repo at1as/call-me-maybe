@@ -4,27 +4,29 @@
 
   <p>
     <%= f.label "Email Address" %><span class="required_star">*</span><br>
-    <%= f.text_field :guest_email, class: 'form-control' %>
+    <%= f.text_field :guest_email, required: true, class: 'form-control' %>
   </p>
   
   <p>
     <%= f.label "Scheduled Date" %><br>
-    <%= f.text_field :message, class: 'form-control', readonly: true, value: date_str(@date) %>
+    <%= f.text_field :start_time, class: 'form-control', readonly: true, value: date_str(@date) %>
   </p>
   
   <p>
-    <%= f.label "Scheduled Times" %><span class="required_star">*</span><br>
-    <%= f.select :message, times_available(@date), name: 'time', class: 'form-control' %>
+    <%= f.label "Available Times" %><span class="required_star">*</span><br>
+    <p style="margin-left:10px"><i>All Times represented in your timezone as selected below</i></p> 
+    <%= select nil, :start_time_time_component, times_available(@date, @timezone), name: 'available-times', class: 'form-control' %>
   </p>
   
   <p>
-    <%= f.label "Time Zone" %><br>
-    <%= f.time_zone_select(:message, ActiveSupport::TimeZone.us_zones, default: "Pacific Time (US & Canada)") %>
+    <%= label nil, "Your Time Zone" %><br>
+    <%= time_zone_select nil, :conversation_timezone, ActiveSupport::TimeZone.us_zones, default: @timezone %>
   </p>
   
   <p>
-    <%= f.label "Reminder" %><br>
-    <%= f.text_field :message, class: 'form-control' %>
+    <%= f.label "Reminder" %>
+    <p style="margin-left:10px"><i>Want an email reminder before the call?</i></p> 
+    <%= f.select :reminder, reminder_times(@date), class: 'form-control' %>
   </p>
   
   <p>
