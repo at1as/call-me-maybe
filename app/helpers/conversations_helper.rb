@@ -4,7 +4,7 @@ module ConversationsHelper
   AVAILABLE ||= [
     ["monday",   17, 21],
     ["thursday", 18, 22]
-  ]
+  ].freeze
 
   DEFAULT_TIMEZONE ||= "Pacific Time (US & Canada)"
 
@@ -46,7 +46,7 @@ module ConversationsHelper
 
     (days.first[1]..days.first[2]).to_a.map do |hour|
       [
-        "#{get_datetime(date, hour, timezone).to_time}",
+        get_datetime(date, hour, timezone).to_time.to_s,
         hour 
       ]
     end
@@ -77,11 +77,11 @@ module ConversationsHelper
   end
 
   def default_timezone_offset(timezone_name = DEFAULT_TIMEZONE)
-    ActiveSupport::TimeZone.new(timezone_name).utc_offset 
+    ActiveSupport::TimeZone.new(timezone_name).utc_offset
   end
 
   def timezone_offset_in_hours(timezone)
-    timezone / (60*60)
+    timezone / (60 * 60)
   end
 
   def timeify_hour(hour)

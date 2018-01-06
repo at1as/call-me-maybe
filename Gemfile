@@ -37,7 +37,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'twilio-ruby', '~> 5.5.0'   # For video calls & txt msg reminders
+gem 'twilio-ruby', '~> 5.6.0'   # For video calls & txt msg reminders
+gem 'sidekiq', '~> 5.0.5'       # Persist ActiveJob
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

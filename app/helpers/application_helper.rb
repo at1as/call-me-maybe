@@ -6,7 +6,7 @@ module ApplicationHelper
   end
 
   def am_or_pm_from_24h(hour)
-    "#{hour % 12}" + " " + "#{ hour < 12 ? "AM" : "PM"  }"
+    (hour % 12).to_s + " " + "#{ hour < 12 ? "AM" : "PM" }"
   end
 
 end

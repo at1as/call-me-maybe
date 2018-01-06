@@ -1,5 +1,4 @@
 class ConversationsController < ApplicationController
-  
   def new
     @conversation = Conversation.new
     @date         = params[:date]
@@ -8,19 +7,26 @@ class ConversationsController < ApplicationController
 
   def index
     @conversations = Conversation.all
-    
-    render 'index'    
+
+    render 'index'
   end
 
   def create
     fields = conversation_params
-    fields[:start_time] += " " + params[:start_time_time_component]
-
+    
+    fields[:start_time] += " " + params[:start_time_time_component] + ":00 " + (params[:timezone] || DEFAULT_TIMEZONE)
+    
+    if fields[:reminder]
+      fields[:reminder] = DateTime.parse(fields[:start_time]) - fields[:reminder].to_i.minutes
+    end
+    
     @conversation = Conversation.new(fields)
     @date = params[:date]
     
     if @conversation.save
       flash[:success] = "Timeslot Booked!"
+      invoke_creation_jobs(fields)
+      
       redirect_to conversations_path
     else
       render 'index'
@@ -29,7 +35,24 @@ class ConversationsController < ApplicationController
 
   private
     def conversation_params
-      params.require(:conversation).permit(:guest_email, :reminder, :start_time, :message, :date, :day, :time)
+      params.require(:conversation).permit(:guest_email, :reminder, :start_time, :message, :date, :day, :time, :phonenumber)
     end
 
+    def invoke_creation_jobs(fields)
+      sms_alert_job(fields)
+      mailer_job(fields)
+    end
+
+    def sms_alert_job(fields)
+      if fields[:phonenumber] && fields[:reminder]
+        sms_alert_time = fields[:reminder]
+        SmsReminderJob.set(wait_until: sms_alert_time).perform_later(fields[:phonenumber], fields[:start_time])
+        #SmsReminderJob.perform_now(fields[:phonenumber], fields[:start_time]) ## DEBUG
+      end
+    end
+
+    def mailer_job(fields)
+      email_alert_time = DateTime.parse(fields[:start_time]) - 5.minutes
+      MailVideoUrlJob.set(wait_until: email_alert_time).perform_later(fields[:guest_email], fields[:start_time])
+    end
 end
