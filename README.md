@@ -6,8 +6,11 @@ Simply pick an available slot in on the Calendar, optionally enter your phone nu
 
 ### Screenshots
 
-![Demo](https://github.com/at1as/at1as.github.io/raw/master/github_repo_assets/call-me-maybe1.png)
-![Demo](https://github.com/at1as/at1as.github.io/raw/master/github_repo_assets/call-me-maybe2.png)
+#### Schedule Page
+<img src="https://github.com/at1as/at1as.github.io/raw/master/github_repo_assets/call-me-maybe1.png" width="700px"/>
+
+#### Video Chat Page
+<img src="https://github.com/at1as/at1as.github.io/raw/master/github_repo_assets/call-me-maybe2.png" width="700px"/>
 
 ### Running
 
@@ -31,19 +34,14 @@ $ pg_ctl -D /usr/local/var/postgres start
 $ TWILIO_ACCOUNT_SID=<AC...> TWILIO_AUTH_TOKEN=<AUTH_TOKEN> TWILIO_API_KEY_SID=<SK...> TWILIO_SECRET=<SECRET> rails s
 ```
 
-Note that Chrome browser requires HTTPS. One quick way to accomplish this without an SSL cert is to tunnel through ngrok
-
-```
-$ ngrok http 3000
-```
-
-And connect via https.
+Note that Chrome browser requires HTTPS. One quick way to accomplish this without an SSL cert is to tunnel through ngrok `$ ngrok http 3000` and connect via https.
 
 
 ### Notes
 
 * Developed with Rails 5.1 on macOS using Ruby 2.4
 * Video chat will work in Chrome (only over https), Firefox (http/https), but not in Safari
+* Emailed URLs will contain a URL param `token=<....>"`. This parameter is unique and required for the client to connect to Twilio. Emails are sent out with a unique token in the link just before the chat, and tokens will expire shortly thereafter.
 
 ## TODO
 
