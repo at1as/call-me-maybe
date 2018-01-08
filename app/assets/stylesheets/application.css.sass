@@ -243,3 +243,92 @@ input, textarea, select, .uneditable-inpuT
   margin-top: 20px
   margin-bottom: 40px
 
+
+// Chat
+div
+  &#remote-media
+    height: 43%
+    width: 100%
+    background-color: #fff
+    text-align: center
+    margin: auto
+    video
+      border: 1px solid #272726
+      max-width: 100%
+      background-color: #272726
+      background-repeat: no-repeat
+  &#controls
+    border-radius: 2px
+    background-color: #DDD
+    padding: 1em
+    max-width: 1200px
+    margin: 0 auto
+    div
+      &#room-controls, &#preview
+        text-align: center
+    p.instructions
+      text-align: left
+      margin-bottom: 1em
+      font-family: Helvetica-LightOblique, Helvetica, sans-serif
+      font-style: oblique
+      font-size: 1.25em
+      color: #777776
+    button
+      width: 12em
+      height: 2.5em
+      margin-top: 1.75em
+      border-radius: 1em
+      font-family: "Helvetica Light", Helvetica, sans-serif
+      font-size: .8em
+      font-weight: lighter
+      outline: 0
+    div#room-controls input
+      font-family: Helvetica-LightOblique, Helvetica, sans-serif
+      font-style: oblique
+      font-size: 1em
+    button:active
+      position: relative
+      top: 1px
+    div
+      &#preview
+        div#local-media
+          width: 270px
+          height: 150px
+          border: 1px solid #cececc
+          box-sizing: border-box
+          background-position: center
+          background-repeat: no-repeat
+          background-color: #444
+          margin-left: auto
+          margin-right: auto
+          video
+            max-width: 100%
+            max-height: 100%
+            margin-right: auto
+            margin-left: auto
+            text-align: center
+            border: none
+        button#button-preview
+          border: none
+          padding-left: 1.5em
+      &#room-controls
+        display: none
+        input
+          width: 100%
+          height: 2.5em
+          padding: .5em
+          display: block
+#log
+  background-color: #EFEFEF
+  border-radius: 2px
+  height: 9.5em
+  text-align: left
+  overflow-y: scroll
+  margin-top: 10px
+  padding: 10px
+  p
+    color: #686865
+    line-height: 1.25em
+    margin-left: 1.25em
+    text-indent: -1.25em
+    width: 90%

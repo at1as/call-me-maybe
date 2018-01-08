@@ -47,7 +47,6 @@ class ConversationsController < ApplicationController
       if fields[:phonenumber] && fields[:reminder]
         sms_alert_time = fields[:reminder]
         SmsReminderJob.set(wait_until: sms_alert_time).perform_later(fields[:phonenumber], fields[:start_time])
-        #SmsReminderJob.perform_now(fields[:phonenumber], fields[:start_time]) ## DEBUG
       end
     end
 
