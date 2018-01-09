@@ -4,12 +4,14 @@ one:
   guest_email: MyString
   video_url: MyString
   reminder: 2017-11-27 16:21:13
-  scheduled_time: 2017-11-27 16:21:13
+  start_time: 2017-11-27 16:21:13
   message: MyText
+  phonenumber: MyString
 
 two:
   guest_email: MyString
   video_url: MyString
   reminder: 2017-11-27 16:21:13
-  scheduled_time: 2017-11-27 16:21:13
+  start_time: 2017-11-27 16:21:13
   message: MyText
+  phonenumber: MyString

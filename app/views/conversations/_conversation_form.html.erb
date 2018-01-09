@@ -5,7 +5,7 @@
   <p>
     <%= f.label "Email Address" %><span class="required_star">*</span><br>
     <p style="margin-left:10px"><i>You'll be sent a video chat link here before the scheduled call time</i></p> 
-    <%= f.text_field :guest_email, required: true, class: 'form-control' %>
+    <%= f.email_field :guest_email, required: true, class: 'form-control' %>
   </p>
   
   <p>
@@ -27,7 +27,7 @@
   <p>
     <%= f.label "Phone Number" %>
     <p style="margin-left:10px"><i>Want an text message reminder before the call?</i></p> 
-    <%= f.text_field :phonenumber, class: 'form-control' %>
+    <%= f.phone_field :phonenumber, class: 'form-control' %>
   </p>
   
   <p>

@@ -36,6 +36,12 @@ $ TWILIO_ACCOUNT_SID=<AC...> TWILIO_AUTH_TOKEN=<AUTH_TOKEN> TWILIO_API_KEY_SID=<
 
 Note that Chrome browser requires HTTPS. One quick way to accomplish this without an SSL cert is to tunnel through ngrok `$ ngrok http 3000` and connect via https.
 
+### Testing
+
+To test the jobs that send twilio SMS, provide Twilio test credentials, so that real interaction with the Twilio API is performed:  
+
+`TWILIO_ACCOUNT_SID=<test_account_sid> TWILIO_AUTH_TOKEN=<test_auth_token> FROM_NUMBER=+15005550006 rails test`. 
+
 
 ### Notes
 
@@ -43,9 +49,9 @@ Note that Chrome browser requires HTTPS. One quick way to accomplish this withou
 * Video chat will work in Chrome (only over https), Firefox (http/https), but not in Safari
 * Emailed URLs will contain a URL param `token=<....>"`. This parameter is unique and required for the client to connect to Twilio. Emails are sent out with a unique token in the link just before the chat, and tokens will expire shortly thereafter.
 
+
 ## TODO
 
 * Email Chat link needs to be changed from `localhost:3000` to whereever the link the site is hosted at
-* Tests
 * Change video URL from including token to user accessing page by providing email address
 

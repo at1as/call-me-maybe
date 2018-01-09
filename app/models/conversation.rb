@@ -5,6 +5,7 @@ class Conversation < ApplicationRecord
   VALID_PHONE_NUM = /\D*([2-9]\d{2})(\D*)([2-9]\d{2})(\D*)(\d{4})\D*/i
 
   validates :guest_email, presence: true
+  validates :start_time, presence: true
   validates_format_of :guest_email,  :with => VALID_EMAIL_ADD, :on => :create, :allow_blank => false
   #validates_format_of :phonenumber, :with => VALID_EMAIL_ADD, :on => :create, :allow_blank => true
 end
