@@ -21,7 +21,7 @@ gem 'simple_calendar', '~> 2.0'         # Simple JS calendar
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 gem 'therubyracer', platforms: :ruby
-
+gem 'bcrypt', '~> 3.1.11' # Adds has_secure_password methods, etc
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

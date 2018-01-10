@@ -23,7 +23,10 @@
       
       <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "About", url_for(:controller => 'pages', :action => 'about') %></li>
-          <li><%= link_to "Admin", "#" %></li>
+          <li><%= link_to "Admin", url_for(:controller => 'sessions', :action => 'new') %></li>
+          <% if logged_in? %>
+            <li><%= link_to "Log out", url_for(:controller => 'sessions', :action => 'destroy', :method => :delete) %></li>
+          <% end %>
       </ul>
     
     </div><!-- /.navbar-collapse -->

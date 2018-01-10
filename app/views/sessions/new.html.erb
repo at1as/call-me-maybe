@@ -1,0 +1,29 @@
+<h1 class="center">Admin Login</h1>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    
+    <%= flash_messages %>
+
+    <div class="outer_form_container">
+      <div class="form_boundary">
+        <%= form_for(:session) do |f| %>
+
+          <%= f.label :email %>
+          <%= f.email_field :email, class: 'form-control', required: true %>
+
+          <%= f.label :password %>
+          <%= f.password_field :password, class: 'form-control', required: true %>
+
+          <%= f.label :remember_me, class: "col-sm-10 checkbox inline", style: "margin-left:4px; width:100%" do %>
+            <%= f.check_box :remember_me, style: "width:15px"%>Remember Me
+          <% end %>
+          
+          <%= f.submit "Log in", class: "btn btn-primary" %>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

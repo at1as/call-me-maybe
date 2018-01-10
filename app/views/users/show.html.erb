@@ -1,0 +1,26 @@
+<div class="center">
+
+  <h3>Upcoming Chats</h3>
+
+  <div class="col-md-8 col-md-offset-2">
+    <% @conversations.each do |conversation| %>
+      <div class="row" style="padding:10px">
+        with <b><%= conversation.guest_email %></b> at <%= link_to conversation.start_time, conversation_path(conversation.id) %>
+      </div>
+    <% end %>
+
+    <hr style="width:300px">
+    <h3>My Availability</h3>
+
+    <% ApplicationHelper::AVAILABLE.each do |available| %>
+      <div class="row" style="padding:10px">
+        <%= available.first %> from <%= available.second %> to <%= available.third %><br/>
+      </div>
+    <% end %>
+
+    <hr style="width:300px">
+    <h4>
+      <%= link_to 'Start Video Chat', chat_path %>
+    </h4>
+  </div>
+</div>

@@ -1,4 +1,4 @@
-<h1>Book a Timeslot!</h1>
+<h1>Conversation <%= @conversation.id %></h1>
 
 <p style="text-align:center">
   <%= link_to 'Back to Schedule', conversations_path %>
@@ -6,6 +6,7 @@
 
 <div class="outer_form_container">
   <div class="form_boundary">
-    <%= render 'conversation_form' %>
+    <%= @conversation.start_time %>
+    <%= @conversation.guest_email %>
   </div>
 </div>

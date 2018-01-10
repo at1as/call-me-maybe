@@ -29,8 +29,16 @@ class ConversationsController < ApplicationController
       
       redirect_to conversations_path
     else
+      flash[:error] = "Error booking timeslot"
       render 'index'
     end
+  end
+
+  def show
+    logged_in_user
+
+    @conversation = Conversation.find(params[:id])
+    render 'show'
   end
 
   private

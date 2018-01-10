@@ -1,7 +1,10 @@
 <%= form_for [@conversation] do |f| %>
-  <h4 class="seperator"></h4>
+  
+  <p style="text-align:center; margin-bottom:30px">
+    Select a time below and at the email address provided, you'll receive a link for the call that you can open in the browser
+  </p>
+  
   <hr>
-
   <p>
     <%= f.label "Email Address" %><span class="required_star">*</span><br>
     <p style="margin-left:10px"><i>You'll be sent a video chat link here before the scheduled call time</i></p> 
@@ -40,11 +43,11 @@
     <%= f.text_area :message, class: 'form-control' %>
   </p>
 
-  <p style="margin-top:30px; padding-right:20px; padding-left:20px">
+  <p style="margin-top:30px;">
     <%= f.submit "Confirm", class: "btn btn-large btn-primary" %>
-    <div style="margin-top:10px; margin-bottom:10px; padding-right:20px; padding-left:20px">
-      <%= link_to "Back to Calendar", conversations_path, class: 'btn btn-large btn-primary', style: "width:100%" %>
-    </div>
+  </p>
+  <p>
+    <%= link_to "Back to Calendar", conversations_path, class: 'btn btn-large btn-primary', style: 'width:100%' %>
   </p>
 
 <% end %>

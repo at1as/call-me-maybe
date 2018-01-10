@@ -8,4 +8,5 @@ class GuestMailer < ApplicationMailer
 
     mail(to: @email, subject: 'Upcoming Chat!')
   end
+
 end

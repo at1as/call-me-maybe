@@ -17,6 +17,6 @@ class MailVideoUrlJob < ApplicationJob
       ttl: 86_400 # 24 hours is the max supported
     ).to_jwt
 
-    GuestMailer.video_url_video(email_address, start_time, @token).deliver_now
+    GuestMailer.video_url_email(email_address, start_time, @token).deliver_now
   end
 end
