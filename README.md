@@ -40,12 +40,14 @@ Note that Chrome browser requires HTTPS. One quick way to accomplish this withou
 
 To test the jobs that send twilio SMS, provide Twilio test credentials, so that real interaction with the Twilio API is performed. Note that test credentials are also necessary so that the number does not need to be provisioned to the account before usage.  
 
-`TWILIO_ACCOUNT_SID=<test_account_sid> TWILIO_AUTH_TOKEN=<test_auth_token> FROM_NUMBER=+15005550006 TWILIO_API_KEY_SID=<api_key_sid> TWILIO_SECRET=<secret> rails test`. 
+```
+TWILIO_ACCOUNT_SID=<test_account_sid> TWILIO_AUTH_TOKEN=<test_auth_token> FROM_NUMBER=+15005550006 TWILIO_API_KEY_SID=<SK...> TWILIO_SECRET=<SECRET> rails test
+```
 
 
 ### Notes
 
-* Developed with Rails 5.1 on macOS using Ruby 2.4
+* Developed with Rails 5.1 on macOS using Ruby 2.5.0
 * Video chat will work in Chrome (only over https), Firefox (http/https), but not in Safari
 * Emailed URLs will contain a URL param `token=<....>"`. This parameter is unique and required for the client to connect to Twilio. Emails are sent out with a unique token in the link just before the chat, and tokens will expire shortly thereafter.
 
@@ -54,4 +56,7 @@ To test the jobs that send twilio SMS, provide Twilio test credentials, so that 
 
 * Email Chat link needs to be changed from `localhost:3000` to whereever the link the site is hosted at
 * Change video URL from including token to user accessing page by providing email address
+* Remove associated queued delayed jobs if conversation is deleted
+* Admin->video chat page redirect properly with Turbolinks
+* Upgrade to Rails 5.2
 

@@ -39,6 +39,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'twilio-ruby', '~> 5.6.0'   # For video calls & txt msg reminders
 gem 'sidekiq', '~> 5.0.5'       # Persist ActiveJob
+gem 'phonelib', '~> 0.6.18'     # Validate phone numbers
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

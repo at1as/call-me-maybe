@@ -1,4 +1,4 @@
-class MailVideoCancellationJobJob < ApplicationJob
+class MailVideoCancellationJob < ApplicationJob
   queue_as :default
 
   def perform(email_address, start_time)

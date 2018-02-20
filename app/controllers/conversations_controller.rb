@@ -13,7 +13,12 @@ class ConversationsController < ApplicationController
 
   def create
     fields = conversation_params
-    
+
+    if params[:start_time_time_component].nil? # Param is not part of Conversation model
+      flash[:error] = "Invalid Date"
+      redirect_to conversations_path and return
+    end
+
     fields[:start_time] += " " + params[:start_time_time_component] + ":00 " + (params[:timezone] || DEFAULT_TIMEZONE)
     
     if fields[:reminder]
@@ -29,8 +34,8 @@ class ConversationsController < ApplicationController
       
       redirect_to conversations_path
     else
-      flash[:error] = "Error booking timeslot"
-      render 'index'
+      flash[:error] = "Error booking timeslot. Ensure all fields "
+      redirect_to request.referrer
     end
   end
 
@@ -43,9 +48,12 @@ class ConversationsController < ApplicationController
 
   def destroy
     logged_in_user
+    # TODO: delete delayed notification job
 
     @conversation = Conversation.find(params[:id])
     @conversation.destroy
+
+    Delayed::Job.find(self.delayed_job_id).destroy if self.delayed_job_id
 
     invoke_deletion_job
     redirect_to users_path_url(current_user), :flash => { :success => "Conversation removed from schedule" }
@@ -61,8 +69,8 @@ class ConversationsController < ApplicationController
       mailer_scheduled_job(fields)
     end
 
-    def invoke_deletion_job(fields)
-      mailer_cancelled_job(fields)
+    def invoke_deletion_job
+      mailer_cancelled_job
     end
 
     def sms_alert_job(fields)
@@ -77,7 +85,11 @@ class ConversationsController < ApplicationController
       MailVideoUrlJob.set(wait_until: email_alert_time).perform_later(fields[:guest_email], fields[:start_time])
     end
 
-    def mailer_cancelled_job(fields)
-      MailVideoCancellationJob.perform_later(@conversation.guest_email, @conversation.start_time)
+    def mailer_notify_admin_job(fields)
+
+    end
+
+    def mailer_cancelled_job
+      MailVideoCancellationJob.perform_later(@conversation.guest_email, @conversation.start_time.to_s)
     end
 end

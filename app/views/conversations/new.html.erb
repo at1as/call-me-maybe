@@ -4,8 +4,12 @@
   <%= link_to 'Back to Schedule', conversations_path %>
 </p>
 
-<div class="outer_form_container">
-  <div class="form_boundary">
-    <%= render 'conversation_form' %>
-  </div>
+<div class="col-md-6 col-md-offset-3">
+  	<%= flash_messages %>
+ 
+	<div class="outer_form_container">
+	  <div class="well form_boundary new-chat">
+	    <%= render 'conversation_form' %>
+	  </div>
+	</div>
 </div>

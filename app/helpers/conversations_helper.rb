@@ -43,8 +43,9 @@ module ConversationsHelper
 
   def times_available(date, timezone)
     days = AVAILABLE.select { |day| DateTime.parse(date).send(:"#{day[0]}?") }
+    return [] if days.empty?
 
-    (days.first[1]..days.first[2]).to_a.map do |hour|
+    (days.first[1]..days.first[2]).map do |hour|
       [
         get_datetime(date, hour, timezone).to_time.to_s,
         hour 

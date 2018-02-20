@@ -1,33 +1,35 @@
 <div class="center">
 
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-6 col-md-offset-3">
     <%= flash_messages %>
     
-    <h3>Upcoming Chats</h3>
-    <hr>
+    <div class="well">
+      <h3>Upcoming Chats</h3>
+      <hr>
 
-    <% @conversations.each do |conversation| %>
-      <div class="row" style="padding:10px">
-        with <b><%= conversation.guest_email %></b> at <%= link_to conversation.start_time, conversation_path(conversation.id) %>
-      </div>
-    <% end %>
-    <% if @conversations.length.zero? %>
-      No scheduled conversations
-    <% end %>
+      <% @conversations.each do |conversation| %>
+        <div class="row" style="padding:10px">
+          with <b><%= conversation.guest_email %></b> at <%= link_to conversation.start_time, conversation_path(conversation.id) %>
+        </div>
+      <% end %>
+      <% if @conversations.length.zero? %>
+        No scheduled conversations
+      <% end %>
 
-    <h3>My Availability</h3>
-    <hr>
+      <h3>My Availability</h3>
+      <hr>
 
-    <% ApplicationHelper::AVAILABLE.each do |available| %>
-      <div class="row" style="padding:10px">
-        <%= available.first.capitalize %> from <%= available.second %> to <%= available.third %><br/>
-      </div>
-    <% end %>
+      <% ApplicationHelper::AVAILABLE.each do |available| %>
+        <div class="row" style="padding:10px">
+          <%= available.first.capitalize %> from <%= available.second %> to <%= available.third %><br/>
+        </div>
+      <% end %>
 
-    <h3>Controls</h3>
-    <hr>
-    <h4>
-      <%= link_to 'Start Video Chat', chat_path %>
-    </h4>
+      <h3>Controls</h3>
+      <hr>
+      <h4>
+        <%= link_to 'Start Video Chat', chat_path %>
+      </h4>
+    </div>
   </div>
 </div>

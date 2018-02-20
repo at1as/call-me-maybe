@@ -7,6 +7,7 @@ module ApplicationHelper
   ].freeze
 
   def date_str(date)
+    puts "X#{date}X"
     return "" if date.nil? || date.empty?
     Date.parse(date)
   end

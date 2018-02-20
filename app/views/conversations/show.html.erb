@@ -8,12 +8,26 @@
 </p>
 
 <div class="outer_form_container">
-  <div class="form_boundary">
+  <div class="well form_boundary">
     <div class="row center">
+      <span style="font-weight:600">Time:</span>
       <%= @conversation.start_time %>
     </div>
     <div class="row center">
+      <span style="font-weight:600">Email:</span>
       <%= @conversation.guest_email %>
+    </div>
+    <div class="row center">
+      <span style="font-weight:600">Phonenumber:</span>
+      <%= @conversation.phonenumber or "<NOT PROVIDED>" %>
+    </div>
+    <div class="row center">
+      <span style="font-weight:600">Message:</span>
+      <%= @conversation.message || "" %>
+    </div>
+    <div class="row center">
+      <span style="font-weight:600">Booked At:</span>
+      <%= @conversation.created_at %>
     </div>
   </div>
   
