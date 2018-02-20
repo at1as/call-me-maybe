@@ -38,7 +38,19 @@ $(document).on 'load', '#set-timezone_', () ->
     $this.attr("href", localized_url + '&timezone=' + encodeURIComponent(timezone))
 
 $(document).on 'change', '#conversation_timezone', () ->
-  "X"
+  $this = $(this)
+  url = window.location.href
+
+  console.log(url)
+
+  timezone = $('#conversation_timezone').val()
+  localized_url = url.replace(/&timezone=[^&]*&?/, '&').replace(/&+$/, '')
+  url = localized_url + '&timezone=' + encodeURIComponent(timezone)
+
+  console.log(url)
+  window.location = url
+
+
 
 $(document).on 'load', '#start_time_time_component', () ->
-  "y"
+  ""

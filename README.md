@@ -38,9 +38,9 @@ Note that Chrome browser requires HTTPS. One quick way to accomplish this withou
 
 ### Testing
 
-To test the jobs that send twilio SMS, provide Twilio test credentials, so that real interaction with the Twilio API is performed:  
+To test the jobs that send twilio SMS, provide Twilio test credentials, so that real interaction with the Twilio API is performed. Note that test credentials are also necessary so that the number does not need to be provisioned to the account before usage.  
 
-`TWILIO_ACCOUNT_SID=<test_account_sid> TWILIO_AUTH_TOKEN=<test_auth_token> FROM_NUMBER=+15005550006 rails test`. 
+`TWILIO_ACCOUNT_SID=<test_account_sid> TWILIO_AUTH_TOKEN=<test_auth_token> FROM_NUMBER=+15005550006 TWILIO_API_KEY_SID=<api_key_sid> TWILIO_SECRET=<secret> rails test`. 
 
 
 ### Notes

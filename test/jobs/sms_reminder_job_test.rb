@@ -7,6 +7,8 @@ class SmsReminderJobTest < ActiveJob::TestCase
   end
 
   test 'that sms job can be enqueued' do
+    ENV["TWILIO_FROM_NUMBER"] = "+15005550006"
+    
     assert_enqueued_jobs 0
     SmsReminderJob.perform_later("+14152019999", "2018-01-01 18:50 -800")
     assert_enqueued_jobs 1

@@ -9,4 +9,11 @@ class GuestMailer < ApplicationMailer
     mail(to: @email, subject: 'Upcoming Chat!')
   end
 
+  def cancel_video_chat_email(email_address, start_time)
+  	@email = email_address
+  	@start_time = start_time
+  	
+  	mail(to: @email, subject: 'Cancelled: Upcoming Chat')
+  end
+
 end
