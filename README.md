@@ -56,7 +56,5 @@ TWILIO_ACCOUNT_SID=<test_account_sid> TWILIO_AUTH_TOKEN=<test_auth_token> FROM_N
 
 * Email Chat link needs to be changed from `localhost:3000` to whereever the link the site is hosted at
 * Change video URL from including token to user accessing page by providing email address
-* Remove associated queued delayed jobs if conversation is deleted
-* Admin->video chat page redirect properly with Turbolinks
 * Upgrade to Rails 5.2
 

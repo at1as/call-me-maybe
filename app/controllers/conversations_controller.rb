@@ -30,7 +30,7 @@ class ConversationsController < ApplicationController
     
     if @conversation.save
       flash[:success] = "Timeslot Booked!"
-      invoke_creation_jobs(fields)
+      invoke_creation_jobs(fields, @conversation.id)
       
       redirect_to conversations_path
     else
@@ -53,9 +53,7 @@ class ConversationsController < ApplicationController
     @conversation = Conversation.find(params[:id])
     @conversation.destroy
 
-    Delayed::Job.find(self.delayed_job_id).destroy if self.delayed_job_id
-
-    invoke_deletion_job
+    invoke_deletion_jobs
     redirect_to users_path_url(current_user), :flash => { :success => "Conversation removed from schedule" }
   end
 
@@ -64,29 +62,37 @@ class ConversationsController < ApplicationController
       params.require(:conversation).permit(:guest_email, :reminder, :start_time, :message, :date, :day, :time, :phonenumber)
     end
 
-    def invoke_creation_jobs(fields)
-      sms_alert_job(fields)
-      mailer_scheduled_job(fields)
+    def invoke_creation_jobs(fields, conversation_id)
+      sms_reminder_job(fields, conversation_id)
+      mailer_scheduled_job(fields, conversation_id)
+      mailer_send_url_job(fields, conversation_id)
     end
 
     def invoke_deletion_job
       mailer_cancelled_job
     end
 
-    def sms_alert_job(fields)
-      if fields[:phonenumber] && fields[:reminder]
-        sms_alert_time = fields[:reminder]
-        SmsReminderJob.set(wait_until: sms_alert_time).perform_later(fields[:phonenumber], fields[:start_time])
-      end
-    end
+    def sms_reminder_job(fields, conversation_id)
+      return unless fields[:phonenumber] && fields[:reminder]
 
-    def mailer_scheduled_job(fields)
+      SmsReminderJob.set(wait_until: fields[:reminder]).perform_later(
+        fields[:phonenumber],
+        fields[:start_time],
+        "conversation_id=#{conversation_id}"
+      )
+    end
+    
+    def mailer_scheduled_job(fields, conversation_id, conversation_id)
+      MailVideoScheduledJob.perform_now(
+        fields[:guest_email],
+        fields[:start_time],
+        "conversation_id=#{conversation_id}"
+      )
+    end
+    
+    def mailer_send_url_job(fields, conversation_id)
       email_alert_time = DateTime.parse(fields[:start_time]) - 5.minutes
       MailVideoUrlJob.set(wait_until: email_alert_time).perform_later(fields[:guest_email], fields[:start_time])
-    end
-
-    def mailer_notify_admin_job(fields)
-
     end
 
     def mailer_cancelled_job

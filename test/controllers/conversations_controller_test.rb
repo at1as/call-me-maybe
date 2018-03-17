@@ -14,7 +14,7 @@ class ConversationsControllerTest < ActionDispatch::IntegrationTest
   # TODO: Catch exceptions for missing params
   test "should not create new conversation without params" do
     post conversations_path, params: { conversation: { guest_email: "hello@world.com" } }
-    assert_response :failure
+    assert_response :redirect
   end
 
   test "should create new conversation with all required params" do

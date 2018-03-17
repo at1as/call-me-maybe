@@ -7,7 +7,7 @@ class UserTest < ActiveSupport::TestCase
   end
   
   test "should save with required params" do
-    user = User.new(email: "hello@world.com", "password": "12345678abc1!")
+    user = User.new(email: "hello@world.com", password: "12345678abc1!")
     assert user.save, "Conversation did not save with valid params"
   end
 end
