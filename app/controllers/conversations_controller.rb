@@ -82,7 +82,7 @@ class ConversationsController < ApplicationController
       )
     end
     
-    def mailer_scheduled_job(fields, conversation_id, conversation_id)
+    def mailer_scheduled_job(fields, conversation_id)
       MailVideoScheduledJob.perform_now(
         fields[:guest_email],
         fields[:start_time],
