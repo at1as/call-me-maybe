@@ -6,4 +6,4 @@ env:
 services:
   - postgresql
 before_script:
-  - psql -c 'create database call-me-maybe_test;' -U postgres
+  - psql -c 'create database call_me_maybe_test;' -U postgres
