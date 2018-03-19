@@ -5,5 +5,6 @@ env:
   - DB=pgsql
 services:
   - postgresql
+  - redis-server
 before_script:
   - psql -c 'create database call_me_maybe_test;' -U postgres
