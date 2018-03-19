@@ -82,4 +82,4 @@ production:
   <<: *default
   database: call_me_maybe_production
   username: call_me_maybe
-  password: <%= ENV['CALL-ME-MAYBE_DATABASE_PASSWORD'] %>
+  password: <%= ENV['CALL_ME_MAYBE_DATABASE_PASSWORD'] %>

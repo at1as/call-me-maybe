@@ -5,9 +5,9 @@ class UsersController < ApplicationController
   SCHEDULE_GRACE_PERIOD = 5.minutes
 
   def show
-    if current_user.id != params[:id].to_i
+    unless current_user.id == params[:id].to_i
       flash.now['alert-danger'] = 'Please log in'
-      redirect_to conversations_path
+      redirect_to conversations_path and return
     end
 
     @user = User.find(params[:id])

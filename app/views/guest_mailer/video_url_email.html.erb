@@ -4,7 +4,7 @@ Hi!
 We've got a video call scheduled at <%= @start_time %>!
 
 <br/>
-Please go to <a href="http://localhost:3000/chat?token=<%= @token %>&identity=<%= @email %>&start_time=<%= @start_time %>">http://localhost:3000</a> at the scheduled chat time.
+Please go to <a href="<%= Rails.application.config.base_url %>/chat?token=<%= @token %>&identity=<%= @email %>&start_time=<%= @start_time %>"><%= Rails.application.config.base_url %></a> at the scheduled chat time.
 
 <br/>
 Note that for the video chat to work, you'll need to be using either Google Chrome or Firefox 

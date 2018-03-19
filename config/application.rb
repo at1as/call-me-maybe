@@ -13,6 +13,7 @@ module CallMeMaybe
     config.active_job.queue_adapter = :sidekiq
     config.time_zone = "Pacific Time (US & Canada)"
 
+    config.base_url = ENV["BASE_URL"] || "http://localhost:3000"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
