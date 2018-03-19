@@ -1,4 +1,4 @@
-# Call Me Maybe
+# Call Me Maybe [![Build Status](https://travis-ci.org/at1as/call-me-maybe.svg?branch=master)](https://travis-ci.org/at1as/BetteREST)
 
 Haven't mananged to keep in touch? Call Me Maybe is an app to schedule video chats.
 
